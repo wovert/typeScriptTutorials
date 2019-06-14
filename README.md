@@ -1,7 +1,6 @@
 # TypeScript
 
 > 由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，TypeScript 在 JavaScript 的基础上添加了可选的静态类型和基于类的面向对象编程。
-
 > 其实TypeScript就是相当于JavaScript的增强版，但是最后运行时还要编译成JavaScript。TypeScript最大的目的是让程序员更具创造性，提高生产力，它将极大增强JavaScript编写应用的开发和调试环节，让JavaScript能够方便用于编写大型应用和进行多人协作。
 
 ## TypeScript和JavaScript的对比
@@ -31,7 +30,7 @@
 
 ### 2. 安装TypeScript包
 
-``` shell
+``` sh
 # npm install typescript -g
 # tsc --version
 ```
@@ -62,7 +61,6 @@ Mac: `sudo npm install typescript -g`指令进行安装
 Vscode菜单 -> 终端 -> 运行任务 -> 选择 tsc：构建-tsconfig.json -> 生成一个helloWorld.js文件
 
 # node HelloWorld.js
-
 ```
 
 ## 变量
@@ -81,12 +79,11 @@ Vscode菜单 -> 终端 -> 运行任务 -> 选择 tsc：构建-tsconfig.json -> �
 - Array : 数组类型
 - Tuple : 元祖类型
 - Null ：空类型
+- Never: never类型
 
 ### Undefined 类型
 
 > 定义了一个变量，但没有给他赋予任何值的时候，他就是Undefined类型
-
-![实例](./datatype/Undefined.js)
 
 ### Number 类型
 
@@ -98,34 +95,29 @@ Vscode菜单 -> 终端 -> 运行任务 -> 选择 tsc：构建-tsconfig.json -> �
 - `Infinity` :正无穷大
 - `-Infinity`：负无穷大
 
-![实例](./datatype/Number.js)
-
 ### string 类型
 
 > 由单引号或者双引号括起来的一串字符就是字符串
-
-![实例](./datatype/String.js)
 
 ### boolean 类型
 
 > boolean类型只有两种值，true和false
 
-![实例](./datatype/Boolean.js)
-
 ### enum 类型
 
 > 很多值是多个并且是固定的
 
-![实例](./datatype/Enum.js)
-
 ### any类型
 
-![实例](./datatype/Any.js)
+> 任何数据类型
+
+### never 类型
+
+> 是其他类型(null/undefined)的子类型，代表从不会出现的值
 
 ## 函数
 
 ### ![定义函数](./function/define_function.js)
-
 
 - 声明（定义）函数必须加 function 关键字；
 - 函数名与变量名一样，命名规则按照标识符规则；
@@ -152,13 +144,13 @@ Vscode菜单 -> 终端 -> 运行任务 -> 选择 tsc：构建-tsconfig.json -> �
 
 > 就是我们定义形参的时候，可以定义一个可传可不传的参数。这种参数，在定义函数的时候通过?标注。
 
-![实例](./datatype/option_param.js)
+![实例](./function/option_params.js)
 
 #### 剩余参数的函数
 
 > 剩余参数就是形参是一个数组，传递几个实参过来都可以直接存在形参的数组中
 
-![实例](./datatype/combine_param.js)
+![实例](./function/rest_params.js)
 
 ### 函数的定义方式
 
@@ -300,8 +292,6 @@ let reg1:RegExp =  /wovert/i
 let website:string = 'wovert.com'
 console.log(reg1.exec(website))
 //[ 'wovert', index: 0, input: 'wovert.com' ]
-
-
 ```
 
 ## 面向对象
@@ -395,3 +385,7 @@ let dehua1:shuaiGe.Dehua   = new shuaiGe.Dehua()
 let dehua2:shuaiGe.Dehua   = new bajie.Dehua()
 dehua1.talk()
 ```
+
+## 创建一个项目
+
+`$ create-react-app my-app --scripts-version=react-scripts-ts`
