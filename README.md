@@ -386,6 +386,14 @@ let dehua2:shuaiGe.Dehua   = new bajie.Dehua()
 dehua1.talk()
 ```
 
+## 泛型
+
+> 自定义的数据类型
+
+## 模块
+
+
+
 ## 创建一个项目
 
 `$ create-react-app my-app --scripts-version=react-scripts-ts`
