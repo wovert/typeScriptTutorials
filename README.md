@@ -298,14 +298,14 @@ console.log(reg1.exec(website))
 
 ### 访问修饰符
 
-- public:公有修饰符，可以在类内或者类外使用public修饰的属性或者行为，默认修饰符。
-- protected:受保护的修饰符，可以本类和子类中使用protected修饰的属性和行为。
-- private : 私有修饰符，只可以在类内使用private修饰的属性和行为。
+- `public`:公有修饰符，可以在类内或者类外使用public修饰的属性或者行为，默认修饰符。
+- `protected`:受保护的修饰符，可以本类和子类中使用protected修饰的属性和行为。
+- `private`: 私有修饰符，只可以在类内使用private修饰的属性和行为。
 
 ### 只读属性修饰符
 
 ``` js
-class Man{
+class Man {
   public readonly sex:string = '男'
 }
 var man:Man = new Man()
