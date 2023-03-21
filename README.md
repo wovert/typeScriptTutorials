@@ -31,11 +31,11 @@
 ### 2. 安装TypeScript包
 
 ``` sh
-# npm install typescript -g
+# npm i typescript -g
 # tsc --version
 ```
 
-Mac: `sudo npm install typescript -g`指令进行安装
+Mac: `sudo npm i typescript -g`指令进行安装
 
 ### 3. 编写 HelloWorld
 
@@ -60,6 +60,8 @@ Mac: `sudo npm install typescript -g`指令进行安装
 
 Vscode菜单 -> 终端 -> 运行任务 -> 选择 tsc：构建-tsconfig.json -> 生成一个helloWorld.js文件
 
+ts编译成js文件
+# tsc HelloWorld.ts
 # node HelloWorld.js
 ```
 
