@@ -65,6 +65,25 @@ ts编译成js文件
 # node HelloWorld.js
 ```
 
+## 配置TS环境
+
+- 本地：ts-node
+- 线上：play-ground
+- 开发：webpack(ts-loader)
+
+```
+npm i -D typescript nodemon ts-node
+
+vim package.json
+  "start": "nodemon --exec ts-node index.ts"
+npx tsc --init
+vim tsconfig.json
+vim index.ts
+  const msg: string = 'hello ts'
+npm run start
+
+```
+
 ## 变量
 
 > TypeScript 特点是变量是强类型的，在声明变量的时候必须定义一个数据类型；比如：字符串、数字、布尔、没去...

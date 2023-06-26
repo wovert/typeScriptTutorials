@@ -63,6 +63,58 @@ abc(12)
 // let user:Student = new Student("Jane", "M.", "User")
 
 // document.body.innerHTML = greeter(user)
+const symid = Symbol("productpro")
+
+// 可索引签名
+interface Product {
+  name: string,
+  price: number,
+  account: number,
+  [symid]: number,
+  [x:string]: any // :number, :symble
+}
+
+
+
+const pro:Product = {
+  name: "SUMSNG",
+  price: 1000,
+  account: 20000,
+  [symid]: 23323,
+  desc: "description",
+  [Symbol("stockno")]: 10000,
+  100: true,
+  true: false,
+}
+console.log(pro)
+
+
+// 属性值类型: string
+type A = Product["name"]
+type F = Product['name'|'price']
+type B = Product[typeof symid]
+
+type Pkeys = keyof Product // "name"|"price"|“account"|...
+let pKyes:Pkeys = "account"
+type AllKeys<T> = T extends any ? T: never
+type Pkeys2 = AllKeys<keyof Product>
+
+// let stru1:string = undefined; // error
+let stru2:string | undefined = undefined;
+console.log(stru2)
+
+function fn(data?: string) {
+  if (data) data.toString()
+  // data!.toString()
+}
+
+// any, unknown, undefined 可以接受 undefined
+// any, unknown, null 可以接受 null
+let duu: unknown = undefined;
+
+
+const a:A = "helo"
+
 
 
 
