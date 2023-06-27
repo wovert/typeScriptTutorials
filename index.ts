@@ -30,3 +30,16 @@ const arr2: (string|number)[] = ['hello', 30]
 const arr4: Array<string> = ['123', '233']
 const arr5: Array<string | number> = ['hello', 2323, 29, 'apple']
 
+function testVoid():void {
+    console.log('void function...')
+  }
+  
+  function add(a:number, b:number):number {
+    return a + b
+  }
+  
+  const color:string = 'rgba(55,51,116,1)'
+  
+  testVoid()
+  console.log(add(10, 20))
+
