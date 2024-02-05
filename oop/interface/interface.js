@@ -7,8 +7,9 @@ function printName(name) {
         return name.firstName;
     }
 }
-var res = printName({
+const res = printName({
     firstName: '张',
+    // lastName: '三'
 });
 console.log(res);
 function ajax(config) {
@@ -35,29 +36,28 @@ ajax({
     url: 'http://api.haoshan.com/v1/channel/news/category',
     dataType: 'json'
 });
-var md5 = function (key, value) {
+let md5 = function (key, value) {
     return key + value;
 };
-var shal1 = function (key, value) {
+let shal1 = function (key, value) {
     return key + '-----' + value;
 };
 md5('name', 'zhansan');
 // 2. 可索引接口：数组、对象的约束
-var nums = [11, 22];
-var names = ['11', '22'];
-var arr = ['aaa', 'bbb'];
+let nums = [11, 22];
+let names = ['11', '22'];
+let arr = ['aaa', 'bbb'];
 console.log(arr);
-var objs = { name: '张三', age: '18', 10: 'abc' };
+let objs = { name: '张三', age: '18', 10: 'abc' };
 console.log(objs);
-var Dog = /** @class */ (function () {
-    function Dog(name) {
+class Dog {
+    constructor(name) {
         this.name = name;
     }
-    Dog.prototype.eat = function () {
+    eat() {
         console.log(this.name + '吃零食');
-    };
-    return Dog;
-}());
-var d = new Dog('wovert');
+    }
+}
+let d = new Dog('wovert');
 console.log(d);
 d.eat();

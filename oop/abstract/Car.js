@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Car = /** @class */ (function () {
-    function Car(name) {
+exports.Car = void 0;
+class Car {
+    constructor(name) {
         this.name = name;
     }
-    Car.prototype.getName = function () {
+    getName() {
         return this.name;
-    };
-    return Car;
-}());
+    }
+}
 exports.Car = Car;

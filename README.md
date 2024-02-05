@@ -1,6 +1,7 @@
 # TypeScript
 
-> 由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，TypeScript 在 JavaScript 的基础上添加了可选的静态类型和基于类的面向对象编程。
+> 由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，TypeScript 在 JavaScript 的基础上添加了可选的**静态类型和基于类的面向对象编程**。
+
 > 其实TypeScript就是相当于JavaScript的增强版，但是最后运行时还要编译成JavaScript。TypeScript最大的目的是让程序员更具创造性，提高生产力，它将极大增强JavaScript编写应用的开发和调试环节，让JavaScript能够方便用于编写大型应用和进行多人协作。
 
 ## TypeScript和JavaScript的对比
@@ -39,19 +40,159 @@ Mac: `sudo npm i typescript -g`指令进行安装
 
 ### 3. 编写 HelloWorld
 
-``` shell
-创建项目
+> 如何用Node.js设置和运行你的Typescript应用程序，并在你的Typescript应用程序中运行一些Node.js包
+
+
+
+1. 创建项目
+```sh
 # mkdir HelloWorld
-
-初始化项目
 # cd HelloWorld
-# npm init -y
+```
 
-创建 tsconfig.json文件，是TypeScript项目配置文件，通过读取它来设置 TypeScript 编译器的编译参数
-# tsc --init
+2. 设置Node.js
 
-安装@types/node: 解决模块的声明文件问题
-# npm install @types/node --dev-save
+`# npm init -y`
+
+3. 设置Typescript
+
+要在Node.js中设置Typescript，你需要Typescript依赖项。要安装Typescript编译器包，请运行以下命令。
+```sh
+# npm i -g typescript
+# tsc --version
+```
+
+注意：Typescript代码不会直接在浏览器上构建（没有浏览器会直接读取Typescript）。浏览器只会读取JavaScript代码。要调用任何Typescript代码，你需要一个编译器来将Typescript转译为浏览器可执行的JavaScript。Typescript只会在开发过程中帮助你，让你从它的功能中受益。
+
+4. 创建一个Typescript配置文件
+
+> 为了用Node.js初始化Typescript项目，在项目根目录下创建一个tsconfig.json文件。
+
+> 该配置文件存储了Typescript编译器的选项。另外，你也可以运行`tsc --init` ，在你所在的任何目录下自动创建这个文件。
+
+`# tsc --init`
+
+tsconfig.json 文件有许多选项。知道什么时候打开和关闭这些选项是很好的。TSC 读取这个文件并使用这些选项将 Typescript 转译为浏览器可读的 JavaScript。
+
+- `"target": "es6"` - 定义编译器将输出的JavaScript的版本。如果你需要更高级的JavaScript功能，如使用箭头函数、 你可以选择使用ES6或更高版本。目标选项允许你使用并遵循新的JavaScript模式。今天的大多数浏览器只理解es6版本的JavaScript。我们需要告诉Typescript编译器将我们的Typescript代码转译成es6 JavaScript。`const let`
+- `"module": "commonjs"` - 用于结构化和组织JavaScript代码的JavaScript模块格式系统。这使得编译器可以使用模块函数，如 对象，如 。`require() module.exports`
+- `"rootDir": "./src"` - 一个存放输入的Typescript文件的目录。我把这个文件夹命名为。`src`
+- `"outDir": "./dist"` - 这是一个输出目录，编译后的JavaScript的输出结构将被保存在这里
+- `"moduleResolution": "node"` - 一个模块导入解析算法，模仿Node.js实时搜索模块的方式。
+- `"strict": true` - 启用所有的JavaScript严格类型检查选项。
+- `"esModuleInterop": true` - esModuleInterop允许我们将ES6模块编译为commonjs模块。
+`"exclude":[]` - 告诉Typescript不要编译指定的文件或文件夹。例如已经安装了Node.js库的JavaScript版本的依赖项。`node_modules`
+
+
+- tsconfig.json
+```json
+{
+  "compilerOptions": {                        
+    "target": "es6",                               
+    "module": "commonjs",                           
+    "outDir": "./dist",                             
+    "rootDir": "./src",                             
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,                       
+  },
+  "exclude":[
+    "./node_modules"
+  ]
+}
+```
+
+5. 在Node.js中使用Typescript
+
+用Typescript和Node.js能够利用开源的NPM包和框架。
+这个例子将设置Typescript与Express.js。你应该从NPM注册表中安装Express.js。
+要做到这一点，请运行npm install express 。
+注意：在使用Node.js编写Typescript时，一定要确保安装了Node.js类型检查包。
+
+
+**注意**：在使用Node.js编写Typescript时，一定要确保安装了Node.js类型检查包。
+
+`# npm install @types/node -D`
+
+Node.js包是用JavaScript而不是Typescript编写的。为了获得其包的类型定义，你需要安装名为@types 的第三方包。
+
+例如，要使用Express类型定义，通过运行安装`@types/express`
+
+`npm install -D @types/express express`
+
+不是所有的包都有@types 。带有类型的软件包有以下 NPM@types 标签。
+
+**DT**
+
+
+6. 使用Typescript设置一个简单的Express服务器。
+
+```ts
+#使用Node时，使用require函数导入一个包。而使用Typescript，使用关键字import来访问一个包模块
+import express, { Request,Response,Application } from 'express';
+
+#在Typescript中初始化Express。
+const app:Application = express();
+
+
+#设置服务器端口
+const PORT = process.env.PORT || 8000;
+
+
+# 设置一个端点/路径
+app.get("/", (req:Request, res:Response):void => {
+  res.send("Hello Typescript with Node.js!")
+});
+
+
+# 监听服务器端口
+app.listen(PORT, ():void => {
+  console.log(`Server Running here 👉 https://localhost:${PORT}`);
+});
+```
+
+运行 `npm start` 来设置服务器并运行。当你在浏览器中打开https://localhost:8000/ ，一个响应将被送回给你，正如在`res.send()` 中定义的。
+
+
+7. 编译ts并运行node
+
+Ts-node允许我们指向一个Typescript文件。它将运行.ts ，为我们编译并在Node.js中运行它。
+
+当使用Ts-node时，确保你的本地项目中安装了Typescript。要安装它，请运行`npm install -D typescript` 。
+
+`npm install -D ts-node`
+
+
+8. 修改代码重启服务器
+> 当开发一个广泛的应用程序时，建议用观察参数钩住你的项目，这将有助于你在对代码结构进行修改和保存时重新启动你的服务器。
+
+`-Ts-node-dev`监视.ts 文件，每当你做了一个改变，它将为你重启服务器。
+
+`npm install -D ts-node-dev`
+
+要使用它，请修改package.json 脚本标签，如下所示。
+
+```json
+"scripts": {
+  "dev": "ts-node-dev --respawn ./src/index.ts"
+}
+```
+然后运行`npm run dev` ，每当你对代码进行修改时，你的服务器就会受到监视。
+
+
+Nodemon -Nodemon的工作原理与Ts-node-dev相同。它是一个Node.js包，用于在创建服务器时监视.js 文件。每当你做出改变并保存服务器文件时，Nodemon会自动为你重新启动服务器。
+
+`npm install -D nodemon`
+
+```json
+"scripts": {
+  "dev": "nodemon ./src/index.ts"
+}
+```
+
+`npm run dev`
+
+
 
 编写 HelloWorld.ts 文件
 # vim HelloWorld.ts
