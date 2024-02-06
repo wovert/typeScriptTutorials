@@ -1,5 +1,6 @@
 import express, { Request,Response,Application } from 'express'
-import './01-datatype'
+// import './01-datatype'
+import './02-function'
 
 
 const app:Application = express()
